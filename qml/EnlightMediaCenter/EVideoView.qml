@@ -5,7 +5,6 @@ Rectangle {
     id: evideo
     color: "#44888888"
     border.color: "#66AAAAAA"
-    radius: 12
 
     property alias text: texttitle.text
     property alias source: video.source
@@ -40,11 +39,11 @@ Rectangle {
         id:video
         objectName: "video"
         width: parent.width - 20
-        height: parent.height - 20
+        height: parent.height - 60
         x: 10
-        y: 40
-        source: "/home/flo/Téléchargements/big_buck_bunny_480p_surround-fix.avi"
-
+        y: 50
+        //source: "/home/flo/Téléchargements/big_buck_bunny_480p_surround-fix.avi"
+        source: ""
 
         MouseArea
         {

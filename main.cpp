@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     MainProcess mainProc("qml/EnlightMediaCenter/main.qml");
-    mainProc.start(true);
+    mainProc.start(false);
 
     return app.exec();
 }

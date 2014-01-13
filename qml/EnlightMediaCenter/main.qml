@@ -12,7 +12,10 @@ Rectangle {
          if(evideoview.state == "hover")
             evideoview.state = "defaut"
          else
+         {
             evideoview.state = "hover"
+            emusicview.state = "defaut"
+         }
          event.accepted = true;
      }
      else if(event.key == Qt.Key_M)
@@ -21,6 +24,17 @@ Rectangle {
             emenu.state = "defaut"
          else
             emenu.state = "hover"
+         event.accepted = true;
+     }
+     else if(event.key == Qt.Key_C)
+     {
+         if(emusicview.state == "hover")
+            emusicview.state = "defaut"
+         else
+         {
+            emusicview.state = "hover"
+            evideoview.state = "defaut"
+         }
          event.accepted = true;
      }
 
@@ -60,7 +74,7 @@ Rectangle {
             },
         State {
                 name:"defaut"; //when: emenuMA.containsMouse == false;
-                PropertyChanges { target: emenu; x: -152 }
+                PropertyChanges { target: emenu; x: -162 }
             }
         ]
 
@@ -81,10 +95,10 @@ Rectangle {
     EVideoView{
         id:evideoview
         objectName: "evideoview"
-        width: parent.width - emenu.width - emenu.x - 20
-        height: parent.height - 20
+        width: parent.width - emenu.width - emenu.x - 10
+        height: parent.height + 2
         x: emenu.width + 10
-        y: 10
+        y: -1
         //focus:true
         state:"defaut"
 
@@ -123,6 +137,41 @@ Rectangle {
             }
         ]
 
+    }
+
+    EMusicView
+    {
+        id:emusicview
+        width: parent.width - emenu.width - emenu.x - 10
+        height: parent.height + 2
+        x: emenu.width + 10
+        y: -1
+        //focus:true
+        state:"defaut"
+
+        states : [
+        State {
+                name:"hover"; //when: emenuMA.containsMouse == true;
+                PropertyChanges { target: emusicview; x:  emenu.x + emenu.width + 10 }
+            },
+        State {
+                name:"defaut"; //when: emenuMA.containsMouse == false;
+                PropertyChanges { target: emusicview; x: mainView.width + 2 }
+            }
+        ]
+
+        transitions: [
+            Transition {
+                from: "hover"
+                to: "defaut"
+                PropertyAnimation { target: emusicview; properties: "x"; duration: 300; easing.type: Easing.InOutQuad }
+            },
+            Transition {
+                from: "defaut"
+                to: "hover"
+                PropertyAnimation { target: emusicview; properties: "x"; duration: 800; easing.type: Easing.OutElastic }
+            }
+        ]
     }
 
 
