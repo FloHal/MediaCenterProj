@@ -13,7 +13,7 @@ VideoView::VideoView(QObject *parent)
 void VideoView::openVideo()
 {
     qDebug() << "Open a video";
-    QString filename = QFileDialog::getOpenFileName(NULL, "Open video", "/home/flo", "Video Files (*.avi)");
+    QString filename = QFileDialog::getOpenFileName(NULL, "Open video", "/home/flo", "Video Files (*.avi *.mp4)");
     if(!filename.isEmpty())
     {
         m_view->setProperty("source", QUrl::fromLocalFile(filename));
